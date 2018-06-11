@@ -1,0 +1,21 @@
+language: python
+
+python:
+  - "3.6"
+
+os: linux
+
+sudo: enabled
+
+branches:
+  only:
+    - dev-live
+
+jobs:
+  include:
+    - stage: deploy
+      script: "./sayTime/saytime.py"
+    - stage: test
+      script: "./sayTime/saytime-test.py"
+
+
