@@ -20,15 +20,15 @@ jobs:
 
 env:
   global:
-  - USER: "pktanksali"
-  - EMAIL: "pktanksali@gmail.com"
-  - REPO: "travisHandsOn"
-  - FILES: ".travis.yml sayTime/saytime-test.py sayTime/saytime.py"
-  - GH_REPO: "github.com/${USER}/${REPO}.git"
+  - USER="pktanksali"
+  - EMAIL="pktanksali@gmail.com"
+  - REPO="travisHandsOn"
+  - FILES=".travis.yml sayTime/saytime-test.py sayTime/saytime.py"
+  - GH_REPO="github.com/${USER}/${REPO}.git"
   - secure: "ewwGtahVKNxdvP-xeWmGMw"
 
 after_success:
-  - MESSAGE: $(git log --format=%B -n 1 $TRAVIS_COMMIT)
+  - MESSAGE="$(git log --format=%B -n 1 $TRAVIS_COMMIT)"
   - git clone git://${GH_REPO}
   - mv -f ${FILES} ${REPO}
   - cd ${REPO}
