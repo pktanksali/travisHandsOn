@@ -25,7 +25,6 @@ env:
   - REPO="travisHandsOn"
   - FILES=".travis.yml sayTime/saytime-test.py sayTime/saytime.py"
   - GH_REPO="github.com/$USER/$REPO.git"
-  - secure: "ewwGtahVKNxdvP-xeWmGMw"
 
 after_success:
   - MESSAGE="$(git log --format=%B -n 1 $TRAVIS_COMMIT)"
@@ -37,4 +36,4 @@ after_success:
   - git config user.name $USER
   - git add $FILES
   - git commit -m $MESSAGE
-  - git push "https://$TRAVIS_SECURE_TOKEN_NAME@$GH_REPO" master > /dev/null 2>&1
+  - git push "https://$USER:$GITHUB_API_KEY@$GH_REPO" master > /dev/null 2>&1
