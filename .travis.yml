@@ -24,16 +24,16 @@ env:
   - EMAIL="pktanksali@gmail.com"
   - REPO="travisHandsOn"
   - FILES=".travis.yml sayTime/saytime-test.py sayTime/saytime.py"
-  - GH_REPO="github.com/$USER/$REPO.git"
+  - GH_REPO="github.com/${USER}/${REPO}.git"
 
 after_success:
-  - MESSAGE="$(git log --format=%B -n 1 $TRAVIS_COMMIT)"
-  - git clone git://$GH_REPO
-  - mv -f ${FILES} $REPO
-  - cd $REPO
+  - MESSAGE="$(git log --format=%B -n 1 ${TRAVIS_COMMIT})"
+  - git clone git://${GH_REPO}
+  - mv -f ${FILES} ${REPO}
+  - cd ${REPO}
   - git remote
-  - git config user.email $EMAIL
-  - git config user.name $USER
-  - git add $FILES
-  - git commit -m $MESSAGE
-  - git push "https://$USER:$GITHUB_API_KEY@$GH_REPO" master > /dev/null 2>&1
+  - git config user.email ${EMAIL}
+  - git config user.name ${USER}
+  - git add ${FILES}
+  - git commit -m ${MESSAGE}
+  - git push "https://${GITHUB_API_KEY}@${GH_REPO}" master > /dev/null 2>&1
